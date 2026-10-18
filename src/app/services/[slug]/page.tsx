@@ -7,8 +7,6 @@ import { getService, services } from "@/features/services/data/services";
 import { ButtonLink } from "@/shared/components/ui/button";
 import { PageHeader, Section } from "@/shared/components/ui/section";
 
-export const instant = false;
-
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }

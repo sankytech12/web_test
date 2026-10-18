@@ -9,8 +9,6 @@ import { getProject, projects } from "@/features/projects/data/projects";
 import { Badge } from "@/shared/components/ui/badge";
 import { Section } from "@/shared/components/ui/section";
 
-export const instant = false;
-
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }

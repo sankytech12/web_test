@@ -4,13 +4,9 @@ import { siteConfig } from "@/core/config/site";
 import { Container } from "../ui/container";
 import { Logo } from "./logo";
 
-async function CurrentYear() {
-  "use cache";
-  return new Date().getFullYear();
-}
-
 export function Footer() {
   const { address } = siteConfig;
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="mt-auto border-t border-border bg-surface">
       <Container className="grid gap-10 py-14 md:grid-cols-4">
@@ -52,7 +48,7 @@ export function Footer() {
       <div className="border-t border-border">
         <Container className="flex flex-col justify-between gap-3 py-6 text-xs text-muted sm:flex-row">
           <p>
-            © <CurrentYear /> {siteConfig.legalName} All rights reserved.
+            © {currentYear} {siteConfig.legalName} All rights reserved.
           </p>
           <ul className="flex gap-5">
             {siteConfig.socials.map((s) => (

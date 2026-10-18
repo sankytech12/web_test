@@ -5,6 +5,8 @@ import { posts } from "@/features/blog/data/posts";
 import { projects } from "@/features/projects/data/projects";
 import { services } from "@/features/services/data/services";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     routes.home, routes.about, routes.services, routes.projects, routes.blog, routes.contact,
