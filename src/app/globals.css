@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #0b0818;
+  --foreground: #f4f2ff;
+  --surface: #14102a;
+  --muted: #a39fbd;
+  --border: #2a2350;
+  --brand: #1a1440;
+  --brand-foreground: #ffffff;
+  --accent: #a58bff;
+  --accent-soft: #231a52;
+  --cta: #ff6a4a;
+  --cta-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-ink: #0d0a1f;
+  --color-spark: #ff6a4a;
+  --color-violet: #6d4aff;
+  --color-glow: #c4b5ff;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-face), var(--font-body), sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection { background: #ff5a36; color: #fff; }
+
+/* ---- animations (ServiceNow-style motion) ---- */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 40s linear infinite; }
+.group\/marquee:hover .animate-marquee { animation-play-state: paused; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(40px, -30px, 0) scale(1.1); }
+  66% { transform: translate3d(-30px, 30px, 0) scale(0.95); }
+}
+.animate-drift { animation: drift 16s ease-in-out infinite; }
+
+@keyframes shimmer { to { background-position: 200% center; } }
+.text-gradient {
+  background-image: linear-gradient(90deg, #ff6a4a, #ff4fa3, #8b6cff, #ff6a4a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 106, 74, 0.55); }
+  100% { box-shadow: 0 0 0 14px rgba(255, 106, 74, 0); }
+}
+.animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+.link-underline {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 2px no-repeat;
+  transition: background-size 0.35s ease;
+}
+.link-underline:hover, .link-underline[aria-current="page"] { background-size: 100% 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-float, .animate-drift, .text-gradient, .animate-pulse-ring { animation: none; }
+}
